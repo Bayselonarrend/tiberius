@@ -7,6 +7,7 @@ use async_native_tls::{Certificate, TlsConnector};
 use futures_util::io::{AsyncRead, AsyncWrite};
 use std::fs;
 use tracing::{event, Level};
+use async_native_tls::Protocol;
 
 pub(crate) async fn create_tls_stream<S: AsyncRead + AsyncWrite + Unpin + Send>(
     config: &Config,
