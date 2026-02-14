@@ -14,8 +14,7 @@ pub(crate) async fn create_tls_stream<S: AsyncRead + AsyncWrite + Unpin + Send>(
     stream: S,
 ) -> crate::Result<TlsStream<S>> {
     let mut builder = TlsConnector::new();
-
-    builder.min_protocol_version(Some(Protocol::Tlsv10));
+    builder = builder.min_protocol_version(Some(Protocol::Tlsv10));
 
     match &config.trust {
         TrustConfig::CaCertificateLocation(path) => {
